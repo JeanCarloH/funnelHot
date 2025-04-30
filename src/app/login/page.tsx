@@ -8,11 +8,11 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
 import { mockLogin } from '@/lib/auth'; 
-
+import swal from 'sweetalert2';  
 
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string().email("Email inválido"),
+  password: z.string().min(6,"La contraseña debe tener al menos 6 caracteres"),
 });
 
 type LoginData = z.infer<typeof loginSchema>;
@@ -31,7 +31,13 @@ export default function LoginPage() {
         login({ email: data.email });
         router.push('/dashboard');
       } else {
-        alert('Credenciales inválidas');
+        console.log("Error en las credenciales");
+        swal.fire({
+            title: 'Error',
+            text: 'Credenciales inválidas',
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+          });
       }
   };
 

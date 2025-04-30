@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createFlow } from '@/services/flowServices';
 import { useRouter } from 'next/navigation';
 import {useFlowStore} from '@/store/flowStore'; 
-
+import swal from 'sweetalert2';  
 const flowSchema = z.object({
     section1: z.object({
         title: z.string().min(1, 'Título requerido'),
@@ -69,6 +69,12 @@ export default function CreateFlowForm() {
 
     const onSubmit = async (data: FlowFormData) => {
         try {
+            swal.fire({
+                title: 'Exitoso',
+                text: 'Creación exitosa',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+              });
             setData(data); 
           const response = await createFlow(data);
           if (response.success) {
