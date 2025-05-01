@@ -3,14 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useFlowStore } from '@/store/flowStore';
 import { createFlow } from '@/services/flowServices';
 import swal from 'sweetalert2';
-
-
-export type FlowFormData = {
-  section1: { title: string; description: string };
-  section2: { content: string; media: string };
-  section3: { note: string; link: string };
-};
-
+import { FlowData } from '@/types/flow';
 export const useFlow = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +11,7 @@ export const useFlow = () => {
   const { data, setData } = useFlowStore();
 
 
-  const createNewFlow = async (flowData: FlowFormData) => {
+  const createNewFlow = async (flowData: FlowData) => {
     setLoading(true);
     setError(null);
     

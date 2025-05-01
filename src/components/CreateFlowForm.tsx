@@ -11,7 +11,8 @@ import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useFlow, FlowFormData } from '@/hooks/useFlow';
+import { useFlow } from '@/hooks/useFlow';
+import { FlowData } from '@/types/flow';
 
 const flowSchema = z.object({
     section1: z.object({
@@ -28,7 +29,7 @@ const flowSchema = z.object({
     }),
 });
 
-const defaultValues: FlowFormData = {
+const defaultValues: FlowData = {
     section1: { title: '', description: '' },
     section2: { content: '', media: '' },
     section3: { note: '', link: '' },
@@ -38,7 +39,7 @@ export default function CreateFlowForm() {
     const [tabIndex, setTabIndex] = useState(0);
     const { createNewFlow, loading } = useFlow();
     
-    const methods = useForm<FlowFormData>({
+    const methods = useForm<FlowData>({
         resolver: zodResolver(flowSchema),
         defaultValues,
         mode: 'onTouched',
@@ -47,7 +48,7 @@ export default function CreateFlowForm() {
     const { handleSubmit, trigger, formState: { errors } } = methods;
 
     const handleNext = async () => {
-        
+        // Definimos qué campos validar según la pestaña actual
         const sectionFields: ('section1.title' | 'section1.description' | 'section2.content' | 'section2.media' | 'section3.note' | 'section3.link')[][] = [
             ['section1.title', 'section1.description'],
             ['section2.content', 'section2.media'],
@@ -61,7 +62,7 @@ export default function CreateFlowForm() {
         }
     };
 
-    const onSubmit = (data: FlowFormData) => {
+    const onSubmit = (data: FlowData) => {
         createNewFlow(data);
     };
 
