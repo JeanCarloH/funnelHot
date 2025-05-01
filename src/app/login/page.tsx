@@ -1,44 +1,26 @@
-
 'use client';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { TextField, Button, Box, Typography } from '@mui/material';
-import { useAuthStore } from '@/store/useAuthStore';
-import { useRouter } from 'next/navigation';
-import { mockLogin } from '@/lib/auth'; 
-import swal from 'sweetalert2';  
+import { TextField, Button, Box, Typography, CircularProgress } from '@mui/material';
+import { useAuth, LoginCredentials } from '@/hooks/useAuth';
 
+// Schema de validación con Zod
 const loginSchema = z.object({
   email: z.string().email("Email inválido"),
-  password: z.string().min(6,"La contraseña debe tener al menos 6 caracteres"),
+  password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
 });
 
-type LoginData = z.infer<typeof loginSchema>;
-
 export default function LoginPage() {
-  const { register, handleSubmit, formState: { errors } } = useForm<LoginData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginCredentials>({
     resolver: zodResolver(loginSchema),
   });
 
-  const login = useAuthStore((state) => state.login);
-  const router = useRouter();
+  const { login, loading } = useAuth();
 
-  const onSubmit = (data: LoginData) => {
-    const result = mockLogin(data.email, data.password);
-    if (result.success) {
-        login({ email: data.email });
-        router.push('/dashboard');
-      } else {
-        console.log("Error en las credenciales");
-        swal.fire({
-            title: 'Error',
-            text: 'Credenciales inválidas',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-          });
-      }
+  const onSubmit = async (data: LoginCredentials) => {
+    await login(data);
   };
 
   return (
@@ -52,6 +34,7 @@ export default function LoginPage() {
           margin="normal"
           error={!!errors.email}
           helperText={errors.email?.message}
+          disabled={loading}
         />
         <TextField
           fullWidth
@@ -61,9 +44,17 @@ export default function LoginPage() {
           margin="normal"
           error={!!errors.password}
           helperText={errors.password?.message}
+          disabled={loading}
         />
-        <Button fullWidth type="submit" variant="contained" sx={{ mt: 2 }}>
-          Ingresar
+        <Button 
+          fullWidth 
+          type="submit" 
+          variant="contained" 
+          sx={{ mt: 2 }}
+          disabled={loading}
+          startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
+        >
+          {loading ? 'Ingresando...' : 'Ingresar'}
         </Button>
       </form>
     </Box>
