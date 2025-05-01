@@ -13,7 +13,6 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useFlow, FlowFormData } from '@/hooks/useFlow';
 
-// Schema de validación con Zod
 const flowSchema = z.object({
     section1: z.object({
         title: z.string().min(1, 'Título requerido'),
@@ -48,7 +47,7 @@ export default function CreateFlowForm() {
     const { handleSubmit, trigger, formState: { errors } } = methods;
 
     const handleNext = async () => {
-        // Definimos qué campos validar según la pestaña actual
+        
         const sectionFields: ('section1.title' | 'section1.description' | 'section2.content' | 'section2.media' | 'section3.note' | 'section3.link')[][] = [
             ['section1.title', 'section1.description'],
             ['section2.content', 'section2.media'],

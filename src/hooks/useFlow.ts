@@ -4,7 +4,7 @@ import { useFlowStore } from '@/store/flowStore';
 import { createFlow } from '@/services/flowServices';
 import swal from 'sweetalert2';
 
-// Definimos los tipos de datos para el hook
+
 export type FlowFormData = {
   section1: { title: string; description: string };
   section2: { content: string; media: string };
@@ -17,16 +17,15 @@ export const useFlow = () => {
   const router = useRouter();
   const { data, setData } = useFlowStore();
 
-  // Función para crear un nuevo flujo
+
   const createNewFlow = async (flowData: FlowFormData) => {
     setLoading(true);
     setError(null);
     
     try {
-      // Guardamos los datos en el store
+
       setData(flowData);
-      
-      // Llamamos al servicio para crear el flujo
+
       const response = await createFlow(flowData);
       
       if (response.success) {
@@ -37,7 +36,7 @@ export const useFlow = () => {
           confirmButtonText: 'Aceptar',
         });
         
-        // Redirigimos a la vista del flujo
+        
         router.push('/flow/view');
         return response.id;
       } else {
@@ -60,7 +59,6 @@ export const useFlow = () => {
     }
   };
 
-  // Función para actualizar un flujo existente
   const updateFlowSection = (
     sectionId: 'section1' | 'section2' | 'section3',
     field: string,
@@ -75,7 +73,6 @@ export const useFlow = () => {
     });
   };
 
-  // Función para obtener un nodo formateado para ReactFlow
   const getFormattedNode = (id: string, position: { x: number, y: number }) => {
     switch (id) {
       case '1':
