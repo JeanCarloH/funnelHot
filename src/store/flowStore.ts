@@ -1,11 +1,5 @@
 import { create } from 'zustand';
-import { FlowData } from '@/types/flow'; 
-
-
-type FlowStore = {
-  data: FlowData;
-  setData: (data: FlowData) => void;
-};
+import { FlowStore } from '@/types/flow'; 
 
 export const useFlowStore = create<FlowStore>((set) => ({
   data: {
