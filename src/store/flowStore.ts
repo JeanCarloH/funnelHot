@@ -1,10 +1,6 @@
 import { create } from 'zustand';
+import { FlowData } from '@/types/flow'; 
 
-type FlowData = {
-  section1: { title: string; description: string };
-  section2: { content: string; media: string };
-  section3: { note: string; link: string };
-};
 
 type FlowStore = {
   data: FlowData;
