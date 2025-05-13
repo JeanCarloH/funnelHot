@@ -131,6 +131,9 @@ src/
 3. **Container/Presentational Pattern**: Separación entre la lógica de negocio y la presentación.
 4. **Flux Pattern (con Zustand)**: Para manejo del estado global de la aplicación.
 5. **Dependency Injection**: Inyección de dependencias para facilitar pruebas y mantener bajo acoplamiento.
+6. **zod**:Se utiliza Zod para definir y validar esquemas de objetos (por ejemplo, formularios, respuestas de API, etc.). Además Aporta seguridad de tipos y validación robusta en tiempo de ejecución y desarrollo y se integra fácilmente con React Hook Form, tRPC, o cualquier lógica de validación.
+
+
 
 ### ¿Por qué Next.js?
 
