@@ -2,8 +2,6 @@
 
 Aplicación web para la gestión de trámites y usuarios desarrollada con Next.js, React, TypeScript y Material UI.
 
-![Sistema de Gestión de Trámites](./public/logo-flit.png)
-
 ## Descripción
 
 Este sistema permite administrar usuarios y trámites, con un flujo de autenticación y acceso a rutas protegidas. La aplicación está construida utilizando tecnologías modernas como Next.js, React y TypeScript, con Material UI como biblioteca de componentes visuales.
