@@ -23,7 +23,7 @@ export const useAuth = () => {
       
       if (result.success) {
         storeLogin({ email: credentials.email });
-        router.push('/dashboard');
+        router.push('/home');
         return true;
       } else {
         throw new Error('Credenciales inválidas');

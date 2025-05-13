@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan Pérez",
+    "correo": "juan.perez@ejemplo.com",
+    "rol": "admin"
+  },
+  {
+    "id": 2,
+    "nombre": "María López",
+    "correo": "maria.lopez@ejemplo.com",
+    "rol": "user"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Rodríguez",
+    "correo": "carlos.rodriguez@ejemplo.com",
+    "rol": "editor"
+  },
+  {
+    "id": 4,
+    "nombre": "Ana Martínez",
+    "correo": "ana.martinez@ejemplo.com",
+    "rol": "user"
+  },
+  {
+    "id": 5,
+    "nombre": "Pedro Sánchez",
+    "correo": "pedro.sanchez@ejemplo.com",
+    "rol": "user"
+  }
+]

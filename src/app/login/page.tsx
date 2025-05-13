@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { TextField, Button, Box, Typography, CircularProgress } from '@mui/material';
-import { useAuth } from '@/hooks/useAuth';
+import {useAuth} from '../../hooks/useAuth'
 import { LoginCredentials } from '@/types/auth';
 
 // Schema de validación con Zod
