@@ -39,8 +39,8 @@ import {
 } from '@/services/userService';
 import { Tramite } from '@/types/process';
 import { User } from '@/types/user';
-import usersMock from '../../mocks/users.json';
-import { getAllUsers } from '../../services/userService'; 
+import usersMock from '../../../mocks/users.json';
+import { getAllUsers } from '../../../services/userService'; 
 
 const getEstadoColor = (estado: string): 'success' | 'warning' | 'error' | 'default' => {
   switch (estado.toLowerCase()) {
@@ -262,7 +262,7 @@ export default function TramitesPage() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <Typography variant="h4" color='primary'>Gestión de Trámites</Typography>
+        <Typography variant="h4" sx={{color: '#1A005B'}}>Gestión de Trámites</Typography>
         <Tooltip title="Añadir Trámite">
           <Fab color="primary" onClick={() => handleOpenForm()}>
             <AddIcon />

@@ -80,7 +80,7 @@ Email: jeancarlocj14@gmail.com
 Contraseña: 123456
 ```
 
-## Pruebas (Testing)
+## Pruebas (Testing)dsd
 
 El proyecto incluye pruebas unitarias utilizando Jest y React Testing Library. Para ejecutar las pruebas:
 

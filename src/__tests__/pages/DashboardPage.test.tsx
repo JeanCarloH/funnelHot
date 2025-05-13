@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import DashboardPage from '../../app/dashboard/page';
+import DashboardPage from '../../app/(protected)/dashboard/page';
 import ProtectedRoute from '../../components/ProtectedRoute';
 
 // Mock the useAuth hook

@@ -3,6 +3,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 export default function Header() {
  const router = useRouter();
 
@@ -11,10 +12,11 @@ export default function Header() {
   };
 
   return (
-    <AppBar position="static" color='primary'>
+    <AppBar position="static" sx={{ backgroundColor: '#1A005B' }}>
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}> 
           <Box display="flex" alignItems="center">
+        <Link href="/home" style={{ cursor: 'pointer' }}>
          <Image
             src="/logo-flit.png"
             alt="Logo"
@@ -23,6 +25,7 @@ export default function Header() {
             style={{ marginRight: '10px',marginTop: '5px' }}
           />
           <span style={{ color: 'white',marginTop:'10px' }}>Sistema de Gestión de Trámites</span>
+        </Link>
           </Box>
         </Typography>
         <Box>

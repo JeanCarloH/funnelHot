@@ -25,13 +25,13 @@ import { deepPurple } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import usersMock from '../../mocks/users.json';
+import usersMock from '../../../mocks/users.json';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { User } from '@/types/user';
-import { getAllUsers } from '../../services/userService'; 
-import { updateUser } from '../../services/userService';
-import { createUser } from '../../services/userService';
-import { deleteUser } from '../../services/userService';
+import { getAllUsers } from '../../../services/userService'; 
+import { updateUser } from '../../../services/userService';
+import { createUser } from '../../../services/userService';
+import { deleteUser } from '../../../services/userService';
 interface SnackbarState {
   open: boolean;
   message: string;
@@ -192,7 +192,7 @@ export default function DashboardPage() {
     <ProtectedRoute>
       <Container maxWidth="md" sx={{ mt: 4, mb: 4 }}>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <Typography variant="h4" color="primary">
+          <Typography variant="h4" sx={{color: '#1A005B'}}>
             Gestión de Usuarios
           </Typography>
           <Tooltip title="Añadir Usuario">
